@@ -1,0 +1,18 @@
+<div style="text-align:center">
+  <h1 class="mainHeader">
+    {{ title }}!
+  </h1>
+  <div>
+    <form [formGroup]="pasteForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="codeboxWrapper">
+        <textarea cdkTextareaAutosize cdkAutosizeMinRows="20" class="codeBox" matInput placeholder="Your code"
+          formControlName="code"></textarea>
+      </mat-form-field>
+      <mat-error *ngIf="code.errors?.required && code.touched">A code snippet is required</mat-error>
+      <mat-error *ngIf="code.errors?.minlength">A code snippet must be at least 3 chars long</mat-error>
+      <div>
+        <button [disabled]="pasteForm.invalid" mat-flat-button color="primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
